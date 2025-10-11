@@ -3,7 +3,7 @@ import React from 'react'
 // import Home from './Nav'
 // import SummitraStaticUI from './Footer'
 // import Nav from './Nav'
-// import Footer from './Footer'
+import Footer from './Footer'
 // import Bottom from './Bottom'
 // import Cards from './Cards'
 import Animation from './Animation'
@@ -14,7 +14,7 @@ const App = () => {
     <Animation/>
     {/* <Header/> */}
     {/* <Nav/> */}
-    {/* <Footer/> */}
+    <Footer/>
     {/* <Cards/> */}
     {/* <Bottom/> */}
     
