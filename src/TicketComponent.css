@@ -1,0 +1,132 @@
+
+.basic{
+    width: 600px;
+    height: 850px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background-image: url('https://cdn.prod.website-files.com/687f5648b07a8b67bf809294/688496734d2ec455ce583e1e_Vector%20(1).svg') ;
+    background-color: #9447e2;
+    border: 1px solid #d5b9f0;
+   margin: 20px;
+}
+.b1{
+    width: 250px;
+    height:160px;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.b1 button{
+    width: 95px;
+    height: 40px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    background-color: #A865DC;
+    border-radius: 20px;
+}
+.b2{
+    width: 100%;
+    height: 120px;
+    display: flex;
+   
+    
+}
+ .dollar{
+    width: 280px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid blue; */
+}
+.dollar h1{
+    color: #fdda7a;
+    font-size: 5rem;
+}
+.get{
+    width: 300px;
+    height: 140px;
+    color: white;
+    font-size: 30px;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid rgb(43, 19, 1); */
+}
+.brr{
+    width: 100%;
+    height: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bord{
+    width: 465px;
+    height: 4px;
+    border-bottom: 1px solid rgb(155, 132, 132);
+}
+.para
+{   width: 100%;
+    height: 150px;
+    /* border: 1px solid green; */
+    flex-direction: column;
+    display: flex;
+}
+.para p{
+    margin-bottom: 4px;
+    margin-left: 4rem;
+    color:#f2eafa;
+    font-size: 18px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.para .r1{
+    color: #bc8ae1;
+}
+.keyevent{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.point{
+    width: 50px;
+    height: 300px;
+    margin-left: 4rem;
+}
+.point li{
+    margin-bottom: 0.34rem;
+}
+li{
+    list-style: none;
+    color: white;
+    font-size: 18px;
+}
+.point2{
+    width: 350px;
+    height: 300px;
+
+}
+.point2 li{
+    margin-bottom: 2.1rem;
+}
+.buy{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buy button{
+    width: 450px;
+    height: 55px;
+    margin-right: 2rem;
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+    background-color: white;
+    color: black;
+}
