@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import AdminLogin from "./AdminLogin";
 import AdminSignup from "./AdminSignup";
 import Animation from "./Animation";
+import "./style.css";
 
 function App() {
    const isAuthenticated = !!localStorage.getItem("token");
