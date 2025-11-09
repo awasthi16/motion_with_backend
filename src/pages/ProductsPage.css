@@ -1,0 +1,13 @@
+.products-page {
+  text-align: center;
+  padding: 40px;
+  background: #f8f8fc;
+}
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}

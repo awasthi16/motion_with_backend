@@ -1,25 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import products from "../data/products";
+import ProductCard from "../components/ProductCard";
+import "./ProductsPage.css";
+import TicketComponent from "../TicketComponent";
+// import { tickets } from "../ticketData";
 import { motion } from "framer-motion";
 import { Parallax } from "react-parallax";
-import "./Sarath.css";
+import "../Sarath.css";
 import axios from "axios";
-import TicketComponent from "./TicketComponent";
-// import { tickets } from "./ticketData";
 
-const scrollVariants = {
-  hiddenUp: { opacity: 0, y: 100 },
-  hiddenDown: { opacity: 0, y: -100 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
-
-const Ticket = () => {
+const ProductsPage = () => {
 
 
-   const [tickets, setTickets] = useState([]);
+
+ const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // ✅ Fetch events from backend
@@ -36,8 +30,31 @@ const Ticket = () => {
     };
     fetchEvents();
   }, []);
+
+
+  const scrollVariants = {
+  hiddenUp: { opacity: 0, y: 100 },
+  hiddenDown: { opacity: 0, y: -100 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
   return (
-    <section className="relative min-h-screen px-6 py-20 overflow-hidden rounded-t-2xl bg-gradient-to-r from-purple-500 via-purple-700 to-purple-600 text-white">
+//     <div className="products-page">
+//       <h1>Our Products</h1>
+//       <div className="products-grid">
+//         {tickets.map((ticket) => (
+//           // <ProductCard key={product.id} product={product} />
+//          <TicketComponent ticket={ticket} />
+//         ))}
+//       </div>
+//     </div>
+
+
+// -----------------------------
+ <section className="relative min-h-screen px-6 py-20 overflow-hidden rounded-t-2xl bg-gradient-to-r from-purple-500 via-purple-700 to-purple-600 text-white">
       
       {/* 🌟 Floating Light Background */}
       <Parallax strength={200}>
@@ -75,7 +92,7 @@ const Ticket = () => {
             viewport={{ once: false, amount: 0.4 }}
             className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700"
           >
-            <TicketComponent ticket={ticket} />
+            <TicketComponent   key={ticket.id} ticket={ticket} />
           </motion.div>
         ))}
       </div>
@@ -83,4 +100,4 @@ const Ticket = () => {
   );
 };
 
-export default Ticket;
+export default ProductsPage;

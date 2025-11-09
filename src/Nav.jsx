@@ -1,64 +1,109 @@
-import React, { useRef } from 'react';
-import Animation from './Animation';
+
+
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {Link, Navigate, useNavigate} from "react-router-dom"
 
 const Nav = () => {
-  // scrollable div ka ref
-  const scrollRef = useRef(null);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [accumulatedScroll, setAccumulatedScroll] = useState(0);
+
+  const Navigate = useNavigate()
+  const auth=localStorage.getItem("token")
+
+  function logout(){
+    localStorage.clear();
+    Navigate("/")
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const diff = currentScrollY - lastScrollY;
+
+      // Update accumulated scroll
+      let newAccum = accumulatedScroll + diff;
+
+      // Scroll down more than 200px → hide navbar
+      if (newAccum > 200) {
+        setShowHeader(false);
+        newAccum = 0; // reset accumulator
+      }
+
+      // Scroll up more than 200px → show navbar
+      else if (newAccum < -200) {
+        setShowHeader(true);
+        newAccum = 0; // reset accumulator
+      }
+
+      setAccumulatedScroll(newAccum);
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, accumulatedScroll]);
 
   return (
-    <>
-      <section className="w-full flex flex-col md:flex-row justify-between items-center px-6 md:px-16 py-8 ">
-        {/* LEFT SECTION */}
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 text-gray-500 text-sm">
-            <i className="fa-solid fa-store text-blue-600"></i>
-            <span className="text-blue-600">Templates</span>
-            <span>›</span>
-            <span className="text-blue-600">Technology</span>
+    <motion.header
+      animate={{
+        y: showHeader ? 0 : -150,
+        opacity: showHeader ? 1 : 0,
+      }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
+        background: "linear-gradient(to right, rgba(168, 85, 247, 0.6), rgba(126, 34, 206, 0.6), rgba(147, 51, 234, 0.6))",
+        backdropFilter: "blur(10px)",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "1rem 2rem",
+          color: "white",
+        }}
+      >
+        <h1 style={{ fontSize: "1.5rem", fontWeight: "bold" }}>Summitra</h1>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+                    <p style={{ fontWeight: 600 }}><Link to="/auth/event">Event</Link></p>
+                    {auth?<>              <p style={{ fontWeight: 600 }}><Link to="/auth/dashboard">dashboard</Link></p>
+                     <p style={{ fontWeight: 600 }} onClick={logout}>Logout</p>
+                    </>:<><p style={{ fontWeight: 600 }}><Link to="/auth/signup">signup</Link></p>
+            <p style={{ fontWeight: 600 }}><Link to="/auth/login">login</Link></p>
+</>}
+          
+          <div style={{ textAlign: "right" }}>
+            <p style={{ fontWeight: 600 }}>(888) 123 4567</p>
+            <p style={{ fontSize: "0.85rem", opacity: 0.8 }}>info@example.com</p>
           </div>
-
-          <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">
-            Summitra - Technology Website Template
-          </h1>
-
-          <div className="flex items-center gap-2 text-gray-700 mt-1">
-            <span className="text-blue-600 text-lg">
-              <img
-                src="https://cdn.prod.website-files.com/5e593fb060cf877cf875dd1f/68d25dd20d2a50c9817cdb54_1758606882855_632107224_Socail.webp"
-                alt=""
-                width="19px"
-                className="rounded-2xl"
-              />
-            </span>
-            <span className="font-medium">Flowdevz</span>
-          </div>
-        </div>
-
-        {/* RIGHT SECTION */}
-        <div className="flex gap-3 mt-5 md:mt-0">
-          <button className="px-9 py-4 shadow-gray-400 rounded-md bg-gradient-to-r from-white via-gray-50 to-gray-100 hover:from-gray-200 hover:via-gray-100 hover:to-gray-200 cursor-pointer shadow-sm text-sm font-medium">
-            Preview in browser
+          <button
+            style={{
+              background: "white",
+              color: "black",
+              fontWeight: "bold",
+              borderRadius: "9999px",
+              padding: "0.75rem 1.5rem",
+              border: "none",
+              cursor: "pointer",
+              transition: "transform 0.3s",
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+            onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+         <Link to="/ticket">Buy Ticket ➜</Link>
           </button>
-          <button className="px-9 py-4 shadow-gray-400 rounded-md bg-gradient-to-r from-white via-gray-50 to-gray-100 hover:from-gray-200 hover:via-gray-100 hover:to-gray-200 cursor-pointer shadow-sm text-sm font-medium">
-            Preview in Webflow
-          </button>
-          <button className="px-5 py-2 rounded-md bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-medium shadow-sm">
-            Buy $29 USD
-          </button>
-        </div>
-      </section>
-
-      {/* Scrollable Animation container */}
-      <div className="flex justify-center p-7">
-        <div
-          ref={scrollRef}
-          className="w-[1300px] h-[600px] overflow-y-auto scroll-auto rounded-lg shadow-sm shadow-black"
-        >
-          {/* Pass scrollRef to Animation component */}
-          <Animation scrollContainerRef={scrollRef} />
         </div>
       </div>
-    </>
+    </motion.header>
   );
 };
 

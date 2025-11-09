@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-purple-500 via-purple-700 to-purple-600 text-white px-8 md:px-20 py-16 relative overflow-hidden rounded-t-[50px]">
+    <footer className="bg-gradient-to-r from-purple-500 via-purple-700 to-purple-600 text-white px-8 md:px-20 py-16 relative overflow-hidden rounded-t-[100px]">
       {/* MAIN CONTENT */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 md:gap-20">
         

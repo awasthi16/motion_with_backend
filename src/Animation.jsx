@@ -3,6 +3,8 @@ import { Parallax } from "react-parallax";
 import { motion } from "framer-motion";
 import ScrollZoomCard from "./ScrollZoomCard";
 import Ticket from "./Ticket";
+import Footer from "./Footer";
+import Faq from "./Faq";
 
 // 🎞️ Animation variants
 const fadeInUp = {
@@ -58,7 +60,7 @@ const Animation = ({ scrollContainerRef }) => {
       <section className="relative z-10 rounded-b-4xl bg-gradient-to-r from-purple-500 via-purple-700 to-purple-600 shadow-2xl overflow-hidden">
         <Parallax strength={400} blur={{ min: -10, max: 20 }}>
           {/* 🔹 HEADER SECTION */}
-          <motion.header
+          {/* <motion.header
             
             animate={{ y: showHeader ? 0 : -120, opacity: showHeader ? 1 : 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -67,7 +69,9 @@ const Animation = ({ scrollContainerRef }) => {
             <h1 className="text-2xl font-bold">Summitra</h1>
 
             <div className="flex items-center gap-8">
+               <p className="font-semibold">Ticket</p>
               <div className="text-right">
+               
                 <p className="font-semibold">(888) 123 4567</p>
                 <p className="text-sm text-white/80 mt-2">info@example.com</p>
               </div>
@@ -79,7 +83,7 @@ const Animation = ({ scrollContainerRef }) => {
                 </span>
               </button>
             </div>
-          </motion.header>
+          </motion.header> */}
 
           {/* 🟣 Animated background shapes */}
           <motion.div
@@ -231,8 +235,15 @@ const Animation = ({ scrollContainerRef }) => {
         <ScrollZoomCard/>
       </section>
       <section>
-        <Ticket/>
+        {/* <Ticket/> */}
       </section>
+      <section>
+          <Faq/>
+      </section>
+       <section>
+          <Footer/>
+      </section>
+    
     </div>
   );
 };
